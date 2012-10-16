@@ -20,7 +20,21 @@
   return self;
 }
 
+- (id)initWithFrame:(CGRect)frame drawBlock:(void(^)(UIView *__v, CGRect rect))block {
+  self = [super initWithFrame:frame];
+  if (!self) return nil;
+  self.drawBlock = block;
+  return self;
+}
+
++ (id)viewWithFrame:(CGRect)frame drawBlock:(void(^)(UIView *__v, CGRect rect))block {
+  return [[[self alloc]initWithFrame:frame drawBlock:block]autorelease];
+}
+
 - (void)dealloc {
+#ifdef DEBUG_MCCView
+  NSLog(@"dealloc %@", NSStringFromClass([self class]));
+#endif
   self.drawBlock = nil;
   [super dealloc];
 }
