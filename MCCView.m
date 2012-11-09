@@ -15,7 +15,6 @@
 - (id)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (!self) return nil;
-  
   self.contentMode = UIViewContentModeRedraw; /* So that a frame change triggers the re-drawing */
   return self;
 }
