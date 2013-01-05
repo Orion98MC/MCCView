@@ -8,7 +8,7 @@
 #import "MCCView.h"
 
 @implementation MCCView
-@synthesize drawBlock;
+@synthesize drawBlock, onSetFrame;
 
 //#define DEBUG_MCCView
 
@@ -35,6 +35,7 @@
   NSLog(@"dealloc %@", NSStringFromClass([self class]));
 #endif
   self.drawBlock = nil;
+  self.onSetFrame = nil;
   [super dealloc];
 }
 
@@ -46,6 +47,11 @@
     drawBlock(self, rect);
   }
   else [super drawRect:rect];
+}
+
+- (void)setFrame:(CGRect)frame {
+  [super setFrame:frame];
+  if (onSetFrame) onSetFrame(self);
 }
 
 @end

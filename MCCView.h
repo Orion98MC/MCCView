@@ -10,6 +10,7 @@
 @interface MCCView : UIView
 
 @property (copy, nonatomic) void(^drawBlock)(UIView *__v, CGRect rect);
+@property (copy, nonatomic) void(^onSetFrame)(UIView *__v);
 
 + (id)viewWithFrame:(CGRect)frame drawBlock:(void(^)(UIView *__v, CGRect rect))block;
 - (id)initWithFrame:(CGRect)frame drawBlock:(void(^)(UIView *__v, CGRect rect))block;
